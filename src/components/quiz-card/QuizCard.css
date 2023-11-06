@@ -1,0 +1,22 @@
+.w60 {
+	width: 60%;
+}
+.w100 {
+	width: 100%;
+}
+
+.answer-layout .w60 {
+	margin-top: 1rem;
+	border: 1px solid grey;
+	border-radius: 5px;
+}
+.q-card {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.answer-checkbox {
+	text-align: right;
+	background-color: #87c3ecb6;
+	color: green;
+}

@@ -1,0 +1,47 @@
+.mcq-dashboard {
+	/* width: 80%;
+	margin: 2rem auto; */
+	background-color: #fff;
+	padding: 1.5rem;
+	border-radius: 5px;
+}
+.mcq-title {
+	text-align: center;
+	border-bottom: 1px solid grey;
+	padding-bottom: 10px;
+	font-weight: bold;
+}
+.mcq-question-layout {
+	margin: 2rem;
+}
+.MuiFormControlLabel-root {
+	background-color: #dfe0e1;
+	margin: 0.6rem;
+	border-radius: 5px;
+}
+.mcq-total-q {
+	margin-top: 1rem;
+	margin-left: -10px;
+}
+.mcq-next-q {
+	display: flex;
+	justify-content: space-between;
+}
+.mcq-btn {
+	margin-top: 10px;
+}
+.result-style {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.congratulation-style {
+	text-align: center;
+	font-weight: 400;
+	margin-bottom: 1rem;
+	color: #ff0000;
+}
+.score-style {
+	font-weight: 600;
+}

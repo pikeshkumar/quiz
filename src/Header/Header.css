@@ -1,0 +1,18 @@
+.header {
+	background-color: #fff;
+	box-shadow: 2px 2px 12px grey;
+	padding: 1rem;
+}
+.align {
+	display: flex;
+	justify-content: space-between;
+}
+.logo-width {
+	width: 80%;
+}
+.menu-width {
+	width: 13%;
+}
+.align-header {
+	background-color: #fff;
+}

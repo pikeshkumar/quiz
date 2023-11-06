@@ -1,0 +1,98 @@
+.dashboard-layout {
+	width: 80%;
+	margin: 2rem auto;
+}
+.dashboard {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid black;
+	padding: 1rem;
+	border-radius: 5px;
+}
+.title {
+	display: flex;
+	justify-content: space-between;
+}
+.quiz-body {
+	background-color: #fff;
+	padding: 1.5rem;
+	margin: 1rem 0rem;
+	border-radius: 5px;
+}
+.q-title {
+	font-weight: bold;
+}
+.option-list {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+.button[type="button"] {
+	font-size: 0.5rem;
+	background-color: #ffff;
+	color: #000;
+}
+.title-style {
+	font-weight: bold;
+	font-size: 1rem;
+	margin: 1rem 0rem;
+}
+.q-number {
+	margin-top: 1rem;
+	margin-bottom: 0.3rem;
+	text-align: right;
+}
+
+.w100 {
+	width: 100%;
+}
+.w30 {
+	width: 30%;
+}
+
+.q-button {
+	display: flex;
+	justify-content: center;
+	margin-top: 1rem;
+}
+.save-button {
+	display: flex;
+	justify-content: flex-end;
+}
+.MuiFormControl-root {
+	width: 100%;
+}
+.q-card {
+	display: flex;
+	flex-direction: row;
+	/* flex-wrap: wrap; */
+}
+.w60 {
+	width: 60%;
+}
+.w100 {
+	width: 100%;
+}
+
+.answer-layout {
+	margin-top: 1rem;
+	border: 1px solid grey;
+	border-radius: 5px;
+	border: 1px solid grey;
+	border-radius: 5px;
+	margin: 1rem 0rem;
+}
+.q-card {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.answer-checkbox {
+	text-align: right;
+	background-color: #ebf2fc;
+	color: green;
+}
+.answer-unchecked {
+	text-align: right;
+	background-color: #ebf2fc;
+}

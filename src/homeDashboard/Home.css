@@ -1,0 +1,37 @@
+.hr-align {
+	display: flex;
+	justify-content: space-evenly;
+	margin-top: 4rem;
+	flex-wrap: wrap;
+}
+.card-layout {
+	cursor: pointer;
+	margin: 1rem;
+}
+.new-quiz-card {
+	width: 35rem;
+	height: 12rem;
+	border: 1px solid black;
+	/* background: green; */
+	/* background-image: url("../../images/view_quiz.png"); */
+	background-size: cover;
+	background-repeat: no-repeat;
+	padding: 2rem;
+	border-radius: 5px;
+	border: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#create_card {
+	background-image: url("../images/create_quiz.png");
+}
+#view_card {
+	background-image: url("../images/view_quiz.png");
+}
+
+.tx-align {
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.5rem;
+}
