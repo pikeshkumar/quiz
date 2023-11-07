@@ -204,71 +204,75 @@ function CreateQuiz() {
   };
 
   const saveQuestion = () => {
-    if (
-      questionList.length > 0 &&
-      !errors.title.trim().length &&
-      inputValues.title.trim().length > 0 &&
-      !errors.description.trim().length &&
-      inputValues.description.trim().length > 0
-    ) {
-      var mcq_list = {
-        qList: questionList,
-        title: inputValues.title,
-        description: inputValues.description,
-        date: Date(),
-        questionType: questionType,
-      };
-      if (questionType === "single") {
-        localStorage.setItem(
-          (inputValues.title + 1).toString(),
-          JSON.stringify(mcq_list)
-        );
-      } else if (questionType === "multi") {
-        localStorage.setItem(
-          (inputValues.title + 2).toString(),
-          JSON.stringify(mcq_list)
-        );
-      } else if (questionType === "short") {
-        localStorage.setItem(
-          (inputValues.title + 3).toString(),
-          JSON.stringify(mcq_list)
-        );
-      } else {
-        localStorage.setItem(
-          (inputValues.title + 4).toString(),
-          JSON.stringify(mcq_list)
-        );
-      }
-      setQuestionList([]);
-      setInputValues({
-        ...inputValues,
-        title: "",
-        description: "",
-      });
-      setQuestionType("single");
-      // Swal.fire({
-      // 	position: "center",
-      // 	icon: "success",
-      // 	title: "Question Created Successfully",
-      // 	showConfirmButton: false,
-      // 	timer: 1500,
-      // });
+    addQuestion();
 
-      Swal.fire({
-        title: "Question Created Successfully",
-        // text: "You won't be able to revert this!",
-        icon: "success",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "View All Question",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          navigate("/my-quiz"); // Navigate to the '/about' route
-          // Swal.fire("Deleted!", "Your file has been deleted.", "success");
+    setQuestionList((questionList) => {
+      if (
+        questionList.length > 0 &&
+        !errors.title.trim().length &&
+        inputValues.title.trim().length > 0 &&
+        !errors.description.trim().length &&
+        inputValues.description.trim().length > 0
+      ) {
+        var mcq_list = {
+          qList: questionList,
+          title: inputValues.title,
+          description: inputValues.description,
+          date: Date(),
+          questionType: questionType,
+        };
+        if (questionType === "single") {
+          localStorage.setItem(
+            (inputValues.title + 1).toString(),
+            JSON.stringify(mcq_list)
+          );
+        } else if (questionType === "multi") {
+          localStorage.setItem(
+            (inputValues.title + 2).toString(),
+            JSON.stringify(mcq_list)
+          );
+        } else if (questionType === "short") {
+          localStorage.setItem(
+            (inputValues.title + 3).toString(),
+            JSON.stringify(mcq_list)
+          );
+        } else {
+          localStorage.setItem(
+            (inputValues.title + 4).toString(),
+            JSON.stringify(mcq_list)
+          );
         }
-      });
-    }
+        setInputValues({
+          ...inputValues,
+          title: "",
+          description: "",
+        });
+        setQuestionType("single");
+        // Swal.fire({
+        // 	position: "center",
+        // 	icon: "success",
+        // 	title: "Question Created Successfully",
+        // 	showConfirmButton: false,
+        // 	timer: 1500,
+        // });
+
+        Swal.fire({
+          title: "Question Created Successfully",
+          // text: "You won't be able to revert this!",
+          icon: "success",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "View All Question",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            navigate("/my-quiz"); // Navigate to the '/about' route
+            // Swal.fire("Deleted!", "Your file has been deleted.", "success");
+          }
+        });
+      }
+      return [];
+    });
   };
 
   return (
