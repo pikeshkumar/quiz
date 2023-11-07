@@ -111,6 +111,7 @@ function CreateQuiz() {
   };
 
   const addOption = () => {
+    setAnswerChecked(false);
     if (optionField.trim().length > 0 && answerChecked) {
       setOptionList((preOptionList) => [...preOptionList, optionField + 1]);
       setCorrectAnswer((pre) => pre + 1);
@@ -346,6 +347,7 @@ function CreateQuiz() {
                       <Checkbox
                         color="success"
                         onChange={getOptionType}
+                        checked={answerChecked}
                         // disabled={
                         // 	checkboxCount ===
                         // 		0 &&
