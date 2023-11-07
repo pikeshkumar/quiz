@@ -176,10 +176,6 @@ function CreateQuiz() {
             option: optionList,
           },
         ]);
-        setQuestionList((prevQuestionList) => [
-          ...prevQuestionList,
-          { question: inputValues.question, option: optionList },
-        ]);
         setInputValues({
           ...inputValues,
           question: "",
