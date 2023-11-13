@@ -35,3 +35,8 @@ td {
 .action-btn {
 	cursor: pointer;
 }
+
+.disabled{
+	opacity: 0.25;
+	cursor: not-allowed;
+}

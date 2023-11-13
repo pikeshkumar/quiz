@@ -220,6 +220,7 @@ function CreateQuiz() {
           description: inputValues.description,
           date: Date(),
           questionType: questionType,
+          active: true,
         };
         if (questionType === "single") {
           localStorage.setItem(
