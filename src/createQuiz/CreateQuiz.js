@@ -26,7 +26,7 @@ const style = {
   borderRadius: "5px",
 };
 
-function CreateQuiz() {
+function CreateQuiz({ prefilled = false, preFilledQuestion }) {
   // State variables
   const [open, setOpen] = useState(false);
   const [optionList, setOptionList] = useState([]);
@@ -37,6 +37,8 @@ function CreateQuiz() {
   const [questionList, setQuestionList] = useState([]);
   const [questionType, setQuestionType] = useState("single");
   const [answerChecked, setAnswerChecked] = useState(false);
+  const [questionCount, setQuestionCount] = useState(null);
+  const [currentQuestionCount, setCurrentQuestionCount] = useState(0);
   const navigate = useNavigate();
 
   const [inputValues, setInputValues] = useState({
@@ -44,6 +46,8 @@ function CreateQuiz() {
     description: "",
     question: "",
   });
+
+  console.log(inputValues);
 
   const [errors, setErrors] = useState({
     title: "",
@@ -97,8 +101,21 @@ function CreateQuiz() {
   };
 
   useEffect(() => {
-    setOpen(true);
-  }, []);
+    if (!prefilled) {
+      setOpen(true);
+    } else {
+      const data = JSON.parse(localStorage.getItem(preFilledQuestion));
+      setInputValues({
+        title: data.title,
+        description: data.description,
+        question: data.qList[0].question,
+      });
+      setQuestionCount(data.qList.length);
+      setQuestionList(data.qList);
+      setQuestionType(data.questionType);
+      setOptionList(data.qList[0].option);
+    }
+  }, [prefilled, preFilledQuestion]);
 
   // Handle option type checkbox change
   const getOptionType = (e) => {

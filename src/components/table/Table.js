@@ -12,6 +12,7 @@ import { default as React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../table/Table.css";
 import { Switch } from "@mui/material";
+import CreateQuiz from "../../createQuiz/CreateQuiz";
 
 function Table() {
   // State variables for handling dialog and quiz list
@@ -20,6 +21,7 @@ function Table() {
   const [keys, setKeys] = useState([]);
   const [currentKey, setCurrentKey] = useState("");
   const [inactiveQuizs, setInactiveQuizs] = useState([]);
+  const [edit, setEdit] = useState("");
 
   // Function to handle status change (active/inactive)
   const handleStatusChange = (checked, key) => {
@@ -81,11 +83,12 @@ function Table() {
           {keys.length > 0
             ? keys.map((key, index) => {
                 const storedData = JSON.parse(localStorage.getItem(key));
+                console.log(storedData);
                 if (storedData) {
                   return (
                     <tr key={index}>
                       <td>{index + 1} . </td>
-                      <td>{storedData.title}</td>
+                      <td>{storedData?.title || "-"}</td>
                       <td>{storedData.questionType}</td>
                       <td>
                         <span>
@@ -111,7 +114,11 @@ function Table() {
                             }
                             titleAccess="Play Quiz"
                           />
-                          <EditIcon className="action-btn" titleAccess="Edit" />
+                          <EditIcon
+                            className="action-btn"
+                            titleAccess="Edit"
+                            onClick={() => setEdit(key)}
+                          />
                           <DeleteIcon
                             onClick={() => handleClickOpen(key)}
                             className="action-btn"
@@ -160,6 +167,19 @@ function Table() {
             </Button>
           </DialogActions>
         </Dialog>
+
+        {edit && (
+          <Dialog
+            open
+            onClose={() => setEdit("")}
+            className="editDialog"
+            maxWidth="false"
+          >
+            <DialogContent>
+              <CreateQuiz prefilled preFilledQuestion={edit} />
+            </DialogContent>
+          </Dialog>
+        )}
       </div>
     </div>
   );
