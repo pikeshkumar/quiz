@@ -4,6 +4,8 @@
 	background-color: #fff;
 	padding: 1.5rem;
 	border-radius: 5px;
+	text-wrap:wrap;
+	overflow: auto;
 }
 .pq-title {
 	font-weight: bold;

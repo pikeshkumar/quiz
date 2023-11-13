@@ -67,8 +67,8 @@ function Table() {
 
   // JSX code for rendering the table
   return (
-    <div>
-      <table className="table-layout">
+    <div className="table-layout">
+      <table>
         <thead>
           <tr>
             <th>Quiz No</th>
