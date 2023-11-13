@@ -44,6 +44,7 @@ function Table() {
   };
   const deleteQuiz = () => {
     if (currentKey.length > 0) localStorage.removeItem(currentKey);
+    setKeys(Object.keys(localStorage));
     setOpen(false);
   };
   useEffect(() => {
