@@ -336,7 +336,14 @@ function CreateQuiz() {
                         onChange={getOption}
                       />
                       <div>
-                        <IconButton aria-label="add button" onClick={addOption}>
+                        <IconButton
+                          aria-label="add button"
+                          onClick={addOption}
+                          disabled={
+                            optionList.includes(optionField + 0) ||
+                            optionList.includes(optionField + 1)
+                          }
+                        >
                           <AddIcon />
                         </IconButton>
                       </div>
