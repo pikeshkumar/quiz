@@ -307,7 +307,9 @@ function CreateQuiz() {
                   <p style={{ color: "red" }}>{errors.description}</p>
                 )}
               </div>
-              <div className="q-number">Question {questionList.length}</div>
+              <div className="q-number">
+                Total Questions : {questionList.length}
+              </div>
               <TextField
                 id="standard-basic"
                 type="text"
