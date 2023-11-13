@@ -1,6 +1,5 @@
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
-// import DeleteIcon from "@mui/icons-material/Delete";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Checkbox from "@mui/material/Checkbox";
@@ -14,6 +13,7 @@ import Swal from "sweetalert2";
 import QuizCard from "../components/quiz-card/QuizCard";
 import "../createQuiz/CreateQuiz.css";
 
+// Component styles
 const style = {
   position: "absolute",
   top: "50%",
@@ -21,14 +21,13 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 500,
   bgcolor: "background.paper",
-  // border: "2px solid #000",
   boxShadow: 24,
   p: 4,
   borderRadius: "5px",
 };
 
-// const tempOption = ["nitesh1", "kumar0", "sharma0", "ok0"];
 function CreateQuiz() {
+  // State variables
   const [open, setOpen] = useState(false);
   const [optionList, setOptionList] = useState([]);
   const [option, setOption] = useState("");
@@ -52,6 +51,7 @@ function CreateQuiz() {
     question: "",
   });
 
+  // Handle input change
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setInputValues({
@@ -61,6 +61,7 @@ function CreateQuiz() {
 
     // Perform validation for each input field
     if (name === "title") {
+      // Title validation logic
       if (value.trim().length < 10 || value.trim().length > 30) {
         setErrors({
           ...errors,
@@ -71,7 +72,7 @@ function CreateQuiz() {
         setErrors({ ...errors, title: "" });
       }
     } else if (name === "description") {
-      // Add email validation logic here
+      // Description validation logic
       if (value.trim().length < 10 || value.trim().length > 200) {
         setErrors({
           ...errors,
@@ -82,7 +83,7 @@ function CreateQuiz() {
         setErrors({ ...errors, description: "" });
       }
     } else if (name === "question") {
-      // Add password validation logic here
+      // Question validation logic
       if (value.trim().length < 10 || value.trim().length > 200) {
         setErrors({
           ...errors,
@@ -98,18 +99,19 @@ function CreateQuiz() {
   useEffect(() => {
     setOpen(true);
   }, []);
-  // const getOptionValue = (val) => {
-  // 	setOption(val);
-  // };
 
+  // Handle option type checkbox change
   const getOptionType = (e) => {
     var isChecked = e.target.checked;
     setAnswerChecked(isChecked);
   };
+
+  // Handle option input change
   const getOption = (e) => {
     setOptionField(e.target.value);
   };
 
+  // Add option to the list
   const addOption = () => {
     setAnswerChecked(false);
     if (optionField.trim().length > 0 && answerChecked) {
@@ -118,40 +120,10 @@ function CreateQuiz() {
     } else if (optionField.trim().length > 0 && !answerChecked) {
       setOptionList((preOptionList) => [...preOptionList, optionField + 0]);
     }
-
-    // if (
-    // 	optionField.trim().length > 0 &&
-    // 	answerChecked &&
-    // 	questionType === "single"
-    // ) {
-    // 	setOptionList((preOptionList) => [
-    // 		...preOptionList,
-    // 		optionField + 1,
-    // 	]);
-    // 	setCheckboxCount(checkboxCount + 1);
-    // }
-    // else if (checkboxCount === 1 && questionType === "single") {
-    // 	setOptionList((preOptionList) => [
-    // 		...preOptionList,
-    // 		optionField + 0,
-    // 	]);
-    // } else if (
-    // 	optionField.trim().length > 0 &&
-    // 	answerChecked &&
-    // 	questionType !== "single"
-    // ) {
-    // 	setOptionList((preOptionList) => [
-    // 		...preOptionList,
-    // 		optionField + 1,
-    // 	]);
-    // } else {
-    // 	setOptionList((preOptionList) => [
-    // 		...preOptionList,
-    // 		optionField + 0,
-    // 	]);
-    // }
     setOptionField("");
   };
+
+  // Add question to the list
   const addQuestion = () => {
     if (inputValues.question.trim().length > 0 && optionList.length > 0) {
       if (
@@ -163,8 +135,8 @@ function CreateQuiz() {
           title: "Error!",
           text:
             questionType !== "single"
-              ? `Atleast one correct answer required to save question`
-              : `${correctAnswer}one correct answer required to save question`,
+              ? `At least one correct answer required to save question`
+              : `${correctAnswer} one correct answer required to save question`,
           icon: "error",
           confirmButtonText: "Ok",
         });
@@ -186,16 +158,15 @@ function CreateQuiz() {
     } else {
       Swal.fire({
         title: "Error!",
-        text: "Atleast two option required to save question",
+        text: "At least two options required to save question",
         icon: "error",
         confirmButtonText: "Ok",
       });
     }
   };
 
+  // Delete option from the list
   const deleteOption = (e) => {
-    // console.log(e.correct_answer);
-
     if (e.correct_answer) {
       setCorrectAnswer((pre) => pre - 1);
     }
@@ -203,6 +174,7 @@ function CreateQuiz() {
     setOptionList(updatedOptionList);
   };
 
+  // Save the question and navigate
   const saveQuestion = () => {
     addQuestion();
 
@@ -249,26 +221,18 @@ function CreateQuiz() {
           description: "",
         });
         setQuestionType("single");
-        // Swal.fire({
-        // 	position: "center",
-        // 	icon: "success",
-        // 	title: "Question Created Successfully",
-        // 	showConfirmButton: false,
-        // 	timer: 1500,
-        // });
 
+        // Show success message and navigate
         Swal.fire({
           title: "Question Created Successfully",
-          // text: "You won't be able to revert this!",
           icon: "success",
           showCancelButton: true,
           confirmButtonColor: "#3085d6",
           cancelButtonColor: "#d33",
-          confirmButtonText: "View All Question",
+          confirmButtonText: "View All Questions",
         }).then((result) => {
           if (result.isConfirmed) {
-            navigate("/my-quiz"); // Navigate to the '/about' route
-            // Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            navigate("/my-quiz");
           }
         });
       }
