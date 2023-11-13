@@ -10,9 +10,14 @@
 .logo-width {
 	width: 80%;
 }
-.menu-width {
-	width: 13%;
-}
 .align-header {
 	background-color: #fff;
+}
+
+.actionLinks{
+	gap:10px
+}
+
+.actionLinks > *{
+	white-space: nowrap;
 }
