@@ -96,12 +96,14 @@ function Table() {
                             onClick={() =>
                               !inactiveQuizs.includes(key) && playQuiz(key)
                             }
+                            titleAccess="Play Quiz"
                           />
-                          <EditIcon className="action-btn" />
+                          <EditIcon className="action-btn" titleAccess="Edit" />
 
                           <DeleteIcon
                             onClick={() => handleClickOpen(key)}
                             className="action-btn"
+                            titleAccess="Delete"
                           />
                         </div>
                       </td>
